@@ -69,4 +69,4 @@ jobs:
 
       - name: Run ppx tests
         working-directory: lib
-        run: esy echo x test.exe
+        run: esy echo  x test.exe
