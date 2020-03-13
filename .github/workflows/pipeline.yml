@@ -35,17 +35,14 @@ jobs:
           key: ${{ matrix.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install Yarn deps
-        run: |
-          yarn install
+        run: yarn install
 
       - name: Install Esy
-        run: |
-          npm install -g esy@0.6.2
+        run: npm install -g esy@0.6.2
 
       - name: Install Esy deps
-        run: |
-          cd lib
-          esy install
+        working-directory: lib
+        run: esy install
 
       - name: Print Esy cache
         id: print-esy-cache
@@ -59,21 +56,17 @@ jobs:
           key: ${{ matrix.os }}-esy-${{ hashFiles('**/index.json') }}
 
       - name: Build ppx
-        run: |
-          cd lib
-          esy build
+        working-directory: lib
+        run: esy build
 
       - name: Build BuckleScript lib
-        run: |
-          cd lib
-          yarn bs:build
+        working-directory: lib
+        run: yarn bs:build
 
       - name: Install public interface of BuckleScript lib
-        run: |
-          cd lib
-          yarn bs:install
+        working-directory: lib
+        run: yarn bs:install
 
       - name: Run ppx tests
-        run: |
-          cd lib
-          esy x test.exe
+        working-directory: lib
+        run: esy echo x test.exe
