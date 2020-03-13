@@ -1,13 +1,6 @@
 name: re-formality pipeline
 
-on:
-  pull_request:
-    branches:
-      - master
-  push:
-    branches:
-      - master
-      - ppx-fix-ci
+on: [push, pull_request]
 
 jobs:
   build:
