@@ -70,10 +70,10 @@ module Win = {
          "\\\\test\\\\cases\\\\",
        );
 
-  // For some reason bsc output contains double EOL
+  // For some reason bsc output contains double \r
   // in some places in output. Reducing those to one.
   let patch_process_output = x =>
-    x |> Str.global_replace(Str.regexp_string("\r\n"), "\n");
+    "unpatched: " ++ x ++ "patched:" ++ (x |> Str.global_replace(Str.regexp_string("\r"), ""));
 };
 
 let read = channel => {
@@ -90,7 +90,7 @@ let read = channel => {
 
   let output = buffer |> Buffer.contents;
   switch (Sys.os_type) {
-  | "Win32" => output/* |> Win.patch_process_output*/
+  | "Win32" => output |> Win.patch_process_output
   | _ => output
   };
 };
