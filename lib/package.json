@@ -1,0 +1,47 @@
+{
+  "name": "re-formality",
+  "version": "4.0.0-beta.1",
+  "description": "Form validation tool for reason-react",
+  "main": "src/Formality.re",
+  "author": "Alex Fedoseev <alex.fedoseev@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MinimaHQ/re-formality.git"
+  },
+  "scripts": {
+    "start": "yarn run bs:watch",
+    "bs:build": "bsb -clean-world -make-world",
+    "bs:watch": "bsb -clean-world -make-world -w",
+    "bs:install": "bsb -install",
+    "bs:clean": "bsb -clean-world",
+    "test": "esy x test.exe",
+    "test:output:read": "test/script/output-read",
+    "test:output:write": "test/script/output-write",
+    "test:clean": "test/script/clean",
+    "format": "bsrefmt --in-place **/*.{re,rei}"
+  },
+  "files": [
+    "src",
+    "bin",
+    "bsconfig.json",
+    "postinstall.js"
+  ],
+  "dependencies": {
+    "re-debouncer": "2.1.0"
+  },
+  "devDependencies": {
+    "bs-platform": "7.2.2",
+    "reason-react": "0.7.0"
+  },
+  "keywords": [
+    "react",
+    "reason",
+    "reason-react",
+    "reasonml",
+    "ocaml",
+    "bucklescript",
+    "forms",
+    "validation"
+  ]
+}
