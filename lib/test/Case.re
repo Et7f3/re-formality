@@ -90,7 +90,7 @@ let read = channel => {
 
   let output = buffer |> Buffer.contents;
   switch (Sys.os_type) {
-  | "Win32" => output |> Win.patch_process_output
+  | "Win32" => output/* |> Win.patch_process_output*/
   | _ => output
   };
 };
@@ -125,7 +125,7 @@ let output = case => {
   file |> close_in;
   let output = buf |> Bytes.to_string;
   switch (Sys.os_type) {
-  | "Win32" => output/* |> Win.patch_snapshot */
+  | "Win32" => output |> Win.patch_snapshot
   | _ => output
   };
 };
