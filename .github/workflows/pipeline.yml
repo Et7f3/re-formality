@@ -74,8 +74,6 @@ jobs:
           yarn bs:install
 
       - name: Run ppx tests
-        # FIXME: Snapshot tests are broken on Win
-        if: matrix.os != 'windows-latest'
         run: |
           cd lib
           esy x test.exe
