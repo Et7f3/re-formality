@@ -130,9 +130,17 @@ let output = case => {
   };
 };
 
-let ok = case => {actual: case |> actual, expected: (nothing, nothing)};
+let to_raw = str => {
+  let buf = Buffer.create(String.length(str) * 4);
+  String.iter(c => Printf.bprintf(buf,"\\x%02x", Char.code(c)), str);
+  buf;
+}
+
+let patch = {actual: (a, b), expected: (c, d)} => {actual: (a |> to_raw, b |> to_raw), expected: (c |> to_raw, d |> to_raw)}
+
+let ok = case => {actual: case |> actual, expected: (nothing, nothing)} |> patch;
 
 let error = case => {
   actual: case |> actual,
   expected: (nothing, case |> output),
-};
+} |> patch;
