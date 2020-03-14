@@ -73,7 +73,7 @@ module Win = {
   // For some reason bsc output contains double EOL
   // in some places in output. Reducing those to one.
   let patch_process_output = x =>
-    x |> Str.global_replace(Str.regexp_string("\n\n"), "\n");
+    x |> Str.global_replace(Str.regexp_string("\r\n"), "\n");
 };
 
 let read = channel => {
