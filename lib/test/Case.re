@@ -73,7 +73,7 @@ module Win = {
   // For some reason bsc output contains double \r
   // in some places in output. Reducing those to one.
   let patch_process_output = x =>
-    "unpatched: " ++ x ++ "patched:" ++ (x |> Str.global_replace(Str.regexp_string("\r"), ""));
+    x/* |> Str.global_replace(Str.regexp_string("\r"), "")*/;
 };
 
 let read = channel => {
